@@ -22,8 +22,6 @@
 각각의 토큰 마다의 Linear Detokenizer가 구현되어있습니다.
 
 
-<br>
-현재 모방 학습만 구현되어있습니다.
 
 ## Paper Review
 [[BoT 논문 리뷰]Body Transformer: Leveraging Robot Embodiment for Policy Learning
