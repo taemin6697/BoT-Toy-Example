@@ -1,4 +1,9 @@
 # Body Transformer: Leveraging Robot Embodiment for Policy Learning
+
+## Paper Review
+[[BoT 논문 리뷰]Body Transformer: Leveraging Robot Embodiment for Policy Learning
+](https://velog.io/@tm011899/Body-Transformer-Leveraging-Robot-Embodiment-for-Policy-Learning)
+
 ## Toy Example Implementation
 
 ![](https://velog.velcdn.com/images/tm011899/post/d97b60b9-5da7-4601-ba82-31f16a4969a6/image.png)
@@ -21,8 +26,3 @@
 #### BoT DeTokenizer
 각각의 토큰 마다의 Linear Detokenizer가 구현되어있습니다.
 
-
-
-## Paper Review
-[[BoT 논문 리뷰]Body Transformer: Leveraging Robot Embodiment for Policy Learning
-](https://velog.io/@tm011899/Body-Transformer-Leveraging-Robot-Embodiment-for-Policy-Learning)
