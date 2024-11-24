@@ -92,11 +92,11 @@ def run_policy(net, env, device='cpu', mean_inputs=None, std_inputs=None):
 
 
 def main():
-    wandb.init(project='BoT_Toy_Example', name="BoT-Hard")
+    wandb.init(project='BoT_Toy_Example', name="BoT-Mix")
     logger = wandb
 
     device = 'cuda'
-    d_model, head, layer_num = 512, 8, 16
+    d_model, head, layer_num = 512, 4, 8
     dataset = minari.load_dataset("door-expert-v2", download=True)
     env = dataset.recover_environment()
 
@@ -125,7 +125,7 @@ def main():
     train_dataset = torch.utils.data.TensorDataset(new_inputs, targets)
     print(f"Train dataset size: {len(train_dataset)}")
 
-    model = BoTModel(d_model=d_model, head=head, layer_num=layer_num, mode='Hard').to(device)
+    model = BoTModel(d_model=d_model, head=head, layer_num=layer_num, mode='Mix').to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
     criterion = torch.nn.MSELoss()
 
