@@ -133,13 +133,11 @@ class BoT_Detokenizer(nn.Module):
         batch_size = x.size(0)
         action_list = []
 
-        # Explicitly decode actions based on predefined joint names
         for i, joint_name in enumerate(self.detokenizers.keys()):
             token_x = x[:, i, :]  # Extract token for current joint
             joint_action = self.detokenizers[joint_name](token_x)  # Decode using corresponding Linear layer
             action_list.append(joint_action)
 
-        # Concatenate all joint actions into a single action vector
         action = torch.cat(action_list, dim=-1)
         return action
 

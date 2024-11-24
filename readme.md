@@ -20,7 +20,10 @@ model.py를 직접 구현하며 직접적으로 파라미터들이 삽입되어 
 
 코드를 보다 직관적으로 이해할 수 있게 작성하였습니다.
 
-예시 [Video](https://wandb.ai/taemin6697/BoT_Toy_Example?nw=nwusertm011899)에서 직접 학습 과정과 Video를 보실 수 있습니다.
+예시 [Wandb](https://wandb.ai/taemin6697/BoT_Toy_Example?nw=nwusertm011899)에서 직접 학습 과정과 Video를 보실 수 있습니다.
+
+<br>
+
 ![img_1.png](img_1.png)
 ## Requirements
 
