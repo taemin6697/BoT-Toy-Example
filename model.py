@@ -209,9 +209,6 @@ class BoT_Tokenizer(nn.Module):
         }
 
     def forward(self, x):
-        """
-        x: Input tensor of shape [batch_size, input_dim].
-        """
         outputs = []
         for key, indices in self.sensor_map.items():
             inputs = x[:, indices].to(self.zero_token.device)
