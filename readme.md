@@ -20,8 +20,8 @@ model.py를 직접 구현하며 직접적으로 파라미터들이 삽입되어 
 
 코드를 보다 직관적으로 이해할 수 있게 작성하였습니다.
 
-예시 [Video](https://wandb.ai/taemin6697/adroit-bc/runs/boi8j4ht?nw=nwusertm011899)에서 직접 학습 과정과 Video를 보실 수 있습니다.
-
+예시 [Video](https://wandb.ai/taemin6697/BoT_Toy_Example?nw=nwusertm011899)에서 직접 학습 과정과 Video를 보실 수 있습니다.
+![img_1.png](img_1.png)
 ## Requirements
 
 ```
@@ -36,6 +36,8 @@ numpy==1.26.4
 pytorch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 pytorch-cuda=11.8 -c pytorch -c nvidia
 tqdm==4.66.2
 wandb==0.16.3
+matplotlib
+seaborn
 ```
 
 윈도우의 경우 os.environ['MUJOCO_GL'] = 'egl'를 'glfw'로 코드 혹은 라이브러리 단에서 수정하여야합니다.

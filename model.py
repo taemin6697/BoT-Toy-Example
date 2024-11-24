@@ -83,12 +83,14 @@ class BoTEncoder(nn.Module):
                     self.layers.append(TransformerEncoderLayer(d_model, head))
 
     def forward(self, x, mask=None):
+        attention_maps = []
         for i, layer in enumerate(self.layers):
             if self.mode == 'Mix' and i % 2 == 1:
                 x, _ = layer(x, mask=None)
             else:
                 x, _ = layer(x, mask)
-        return x, _
+            attention_maps.append(_)
+        return x, attention_maps
 
 
 class BoT_Detokenizer(nn.Module):
@@ -128,13 +130,6 @@ class BoT_Detokenizer(nn.Module):
         })
 
     def forward(self, x):
-        """
-        Args:
-            x (Tensor): Input tensor of shape (batch_size, num_tokens, embedding_dim).
-
-        Returns:
-            action (Tensor): Decoded actions of shape (batch_size, total_action_size).
-        """
         batch_size = x.size(0)
         action_list = []
 
@@ -264,13 +259,13 @@ class BoTModel(nn.Module):
              [6, 5, 4, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8, 9, 3, 2, 1, 0, 1],
              [7, 6, 5, 6, 7, 8, 9, 6, 7, 8, 9, 6, 7, 8, 9, 6, 7, 8, 9, 10, 4, 3, 2, 1, 0]]
         )
-        self.path_mask = (self.shortest_path_matrix >= 2).float()
-        self.path_mask = self.path_mask.masked_fill(self.shortest_path_matrix >= 2, float('-inf'))
+        self.path_mask = (self.shortest_path_matrix <= 1).float()
+        #self.path_mask = self.path_mask.masked_fill(self.shortest_path_matrix >= 2, float('-inf'))
 
         self.path_mask = self.path_mask.to("cuda:0")
 
     def forward(self, x, mask=None):
         out = self.tokenizer(x)
-        out, _ = self.encoder(out, mask=self.path_mask if mask is None else mask)
+        out, attn_map = self.encoder(out, mask=self.path_mask if mask is None else mask)
         out = self.detokenizer(out)
-        return out, _
+        return out, attn_map
