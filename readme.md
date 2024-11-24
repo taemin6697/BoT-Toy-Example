@@ -22,10 +22,29 @@ model.py를 직접 구현하며 직접적으로 파라미터들이 삽입되어 
 
 예시 [Video](https://wandb.ai/taemin6697/adroit-bc/runs/boi8j4ht?nw=nwusertm011899)에서 직접 학습 과정과 Video를 보실 수 있습니다.
 
+## Requirements
+
+```
+absl-py==2.1.0
+gymnasium-robotics==1.2.4
+imageio==2.34.0
+imageio-ffmpeg==0.4.9
+minari==0.4.3
+-e git+https://github.com/microsoft/MoCapAct.git@8f01663a0da1c5f1fa941417ba4f3ce71c987b18#egg=mocapact
+moviepy==1.0.3
+numpy==1.26.4
+pytorch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 pytorch-cuda=11.8 -c pytorch -c nvidia
+tqdm==4.66.2
+wandb==0.16.3
+```
+
+윈도우의 경우 os.environ['MUJOCO_GL'] = 'egl'를 'glfw'로 코드 혹은 라이브러리 단에서 수정하여야합니다.
+
+
 <br>
 <br>
 
-#### Toy robot(이 부분은 Third Implementation commit을 보시면됩니다.)
+#### Toy robot(이 부분은 fix implementations commit에서 지워진 파일을 보시면됩니다.)
 ![](https://velog.velcdn.com/images/tm011899/post/98fe346c-9b64-4041-a91a-a4875521ab9b/image.jpg)
 팔과 다리 : 4개의 센서 데이터를 입력으로 받습니다.
 
